@@ -23,10 +23,11 @@ const Title = styled.h1`
 
 const CoinsList = styled.ul``;
 const Coin = styled.li`
-  background-color: ${(props) => props.theme.textColor};
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
+  border: 1px solid white;
   a {
     display: flex;
     justify-content: flex-start;
@@ -52,37 +53,11 @@ const Loader = styled.div`
   font-size: 20px;
 `;
 
-// const coins = [
-//   {
-//     id: "btc-bitcoin",
-//     name: "Bitcoin",
-//     symbol: "BTC",
-//     rank: 1,
-//     is_new: false,
-//     is_active: true,
-//     type: "coin",
-//   },
-//   {
-//     id: "eth-ethereum",
-//     name: "Ethereum",
-//     symbol: "ETH",
-//     rank: 2,
-//     is_new: false,
-//     is_active: true,
-//     type: "coin",
-//   },
-//   {
-//     id: "hex-hex",
-//     name: "HEX",
-//     symbol: "HEX",
-//     rank: 3,
-//     is_new: false,
-//     is_active: true,
-//     type: "token",
-//   },
-// ];
+interface ICoinsProps {
+  toggleDark: () => void;
+}
 
-function Coins() {
+function Coins({ toggleDark }: ICoinsProps) {
   // const [coins, setCoins] = useState<ICoin[]>([]);
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
@@ -101,6 +76,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coins</Title>
+        <button onClick={toggleDark}>Toggle Dark Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
